@@ -13,11 +13,12 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="37.0" layoutY="98.0" text="HAVE AN ACCOUNT? USE YOUR CREDENTIALS" />
-      <Label layoutX="37.0" layoutY="123.0" text="IF NOT CREATE AN USER ID AND PASSWORD" />
+      <Label layoutX="37.0" layoutY="98.0" text="HAVE AN ACCOUNT? USE YOUR CREDENTIALS AND SIGN IN" />
+      <Label layoutX="37.0" layoutY="123.0" text="IF NOT CREATE AN USER ID AND PASSWORD AND REGISTER" />
       <TextField fx:id="user_id" layoutX="212.0" layoutY="175.0" text="USER ID" />
       <TextField fx:id="password" layoutX="212.0" layoutY="214.0" text="PASSWORD" />
-      <Button fx:id="sign_in" layoutX="212.0" layoutY="290.0" mnemonicParsing="false" text="SIGN IN" />
-      <Button fx:id="register" layoutX="294.0" layoutY="290.0" mnemonicParsing="false" text="REGISTER" />
+      <Button fx:id="sign_in" layoutX="212.0" layoutY="290.0" mnemonicParsing="false" onAction="#signin" text="SIGN IN" />
+      <Button fx:id="register" layoutX="294.0" layoutY="290.0" mnemonicParsing="false" onAction="#register" text="REGISTER" />
+      <Label fx:id="input_comment" layoutX="273.0" layoutY="254.0" />
    </children>
 </AnchorPane>
