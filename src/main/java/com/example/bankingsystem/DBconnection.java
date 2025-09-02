@@ -5,11 +5,21 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBconnection {
-    public static Connection getConnection() throws SQLException {
-        String url="****";
-        String user="postgres";
-        String password="****";
-        return DriverManager.getConnection(url,user,password);
+    private static Connection conn=null;
+    private DBconnection(){};
+
+    public static Connection getConnection() {
+        if(conn==null){
+            try{
+                String url="****";
+                String user="postgres";
+                String password="****";
+                conn= DriverManager.getConnection(url,user,password);
+            }catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+        return conn;
     }
 
     public static void main(String[] args) throws SQLException {

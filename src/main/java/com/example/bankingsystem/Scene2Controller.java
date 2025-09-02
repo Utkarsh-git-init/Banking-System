@@ -18,9 +18,6 @@ public class Scene2Controller {
     public Label balance_label;
     public static String userid;
 
-    public Scene2Controller() throws SQLException {
-    }
-
     void show(String userid) throws SQLException {
         this.userid=userid;
         String sql="SELECT balance FROM users WHERE user_id=?";

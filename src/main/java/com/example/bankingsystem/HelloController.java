@@ -22,9 +22,6 @@ public class HelloController {
     public Label input_comment;
     Connection conn=DBconnection.getConnection();
     //public static String userid;
-    public HelloController() throws SQLException {
-    }
-
     public void signin(ActionEvent event) throws SQLException, IOException {
         String userid=user_id.getText();
         String passcode=password.getText();
@@ -35,12 +32,7 @@ public class HelloController {
         ResultSet rs=ps.executeQuery();
         if(rs.next()){
             //this.userid=userid;
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("Scene2.fxml"));
-            AnchorPane root=loader.load();
-            Scene2Controller controller2=loader.getController();
-            controller2.show(userid);
-            Scene scene2=new Scene(root);
-            HelloApplication.primarystage.setScene(scene2);
+            switchToScene2(userid);
         }else{
             input_comment.setText("EITHER OF YOUR INFO IS WRONG");
         }
@@ -62,5 +54,13 @@ public class HelloController {
             ps2.setInt(3,0);
             ps2.executeUpdate();
         }
+    }
+    public void switchToScene2(String userid) throws IOException, SQLException {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("Scene2.fxml"));
+        AnchorPane root=loader.load();
+        Scene2Controller controller2=loader.getController();
+        controller2.show(userid);
+        Scene scene2=new Scene(root);
+        HelloApplication.primarystage.setScene(scene2);
     }
 }
