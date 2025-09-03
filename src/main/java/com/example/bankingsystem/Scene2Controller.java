@@ -29,11 +29,24 @@ public class Scene2Controller {
         userid_label.setText(userid);
         balance_label.setText(balance);
     }
-    public void transaction(ActionEvent event) throws IOException {
+    public void transact(ActionEvent event) throws IOException {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("Scene3.fxml"));
         AnchorPane root=loader.load();
-        Scene3Controller controller3=loader.getController();
         Scene scene3=new Scene(root);
         HelloApplication.primarystage.setScene(scene3);
+    }
+    public void transaction_history() throws IOException, SQLException {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("Scene4.fxml"));
+        AnchorPane root=loader.load();
+        Scene scene4=new Scene(root);
+        Scene4Controller controller4=loader.getController();
+        controller4.add();
+        HelloApplication.primarystage.setScene(scene4);
+    }
+    public void logout() throws IOException {
+        FXMLLoader loader=new FXMLLoader(getClass().getResource("Scene1.fxml"));
+        AnchorPane root=loader.load();
+        Scene scene1=new Scene(root);
+        HelloApplication.primarystage.setScene(scene1);
     }
 }

@@ -18,12 +18,17 @@ public class Scene3Controller {
     public TextField transfer_receivers_userid;
     public Label comment;
     public static String userid=Scene2Controller.userid;
-    public int update(int amt,String userid) throws SQLException {
+    public void update(int amt,String userid) throws SQLException {
         String sql="UPDATE users SET balance=balance+? WHERE user_id=?";
         PreparedStatement ps=conn.prepareStatement(sql);
         ps.setInt(1,amt);
         ps.setString(2,userid);
-        return ps.executeUpdate(); // return number of rows affected
+        ps.executeUpdate(); // return number of rows affected
+        String sql2="INSERT INTO transactions(user_id, amount) VALUES(?,?)";
+        PreparedStatement ps2=conn.prepareStatement(sql2);
+        ps2.setString(1,userid);
+        ps2.setInt(2,amt);
+        ps2.executeUpdate();
     }
     public void deposit(ActionEvent event) throws SQLException {
         int amount=Integer.parseInt(amt.getText());
