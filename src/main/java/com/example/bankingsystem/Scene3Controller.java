@@ -1,12 +1,8 @@
 package com.example.bankingsystem;
 
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +13,10 @@ public class Scene3Controller {
     public TextField amt;
     public TextField transfer_receivers_userid;
     public Label comment;
-    public static String userid=Scene2Controller.userid;
+    public String userid;
+    void setuserid(String userid){
+        this.userid=userid;
+    }
     public void update(int amt,String userid) throws SQLException {
         String sql="UPDATE users SET balance=balance+? WHERE user_id=?";
         PreparedStatement ps=conn.prepareStatement(sql);

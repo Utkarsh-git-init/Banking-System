@@ -4,18 +4,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.shape.Rectangle;
 
 import java.io.IOException;
 import java.sql.*;
 
 public class Scene4Controller {
     Connection conn=DBconnection.getConnection();
-    public static String userid=Scene2Controller.userid;
+    String userid;
+    void setuserid(String userid){
+        this.userid=userid;
+    }
     @FXML
     private TableView<Transactions> transaction_table;
     @FXML
@@ -32,14 +33,13 @@ public class Scene4Controller {
         col_time.setCellValueFactory(new PropertyValueFactory<>("timestamp"));
         observableList= FXCollections.observableArrayList();
         transaction_table.setItems(observableList);
+    }
+    public void loadTransactions() throws SQLException {
         String sql="SELECT * FROM transactions where user_id=? ORDER BY timestamp DESC";
         PreparedStatement ps=conn.prepareStatement(sql);
         ps.setString(1,userid);
-        rs=ps.executeQuery();
-    }
-    ResultSet rs;
-    public void add() throws SQLException {
-        while(rs.next()) {
+        ResultSet rs=ps.executeQuery();
+        while(rs.next()){
             String type_temp;
             if (rs.getInt("amount") < 0)
                 type_temp = "DB";

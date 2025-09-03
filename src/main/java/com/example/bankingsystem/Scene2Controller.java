@@ -16,7 +16,7 @@ public class Scene2Controller {
     Connection conn=DBconnection.getConnection();
     public Label userid_label;
     public Label balance_label;
-    public static String userid;
+    public String userid;
 
     void show(String userid) throws SQLException {
         this.userid=userid;
@@ -32,15 +32,18 @@ public class Scene2Controller {
     public void transact(ActionEvent event) throws IOException {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("Scene3.fxml"));
         AnchorPane root=loader.load();
+        Scene3Controller controller3=loader.getController();
+        controller3.setuserid(userid);
         Scene scene3=new Scene(root);
         HelloApplication.primarystage.setScene(scene3);
     }
     public void transaction_history() throws IOException, SQLException {
         FXMLLoader loader=new FXMLLoader(getClass().getResource("Scene4.fxml"));
         AnchorPane root=loader.load();
-        Scene scene4=new Scene(root);
         Scene4Controller controller4=loader.getController();
-        controller4.add();
+        controller4.setuserid(userid);
+        controller4.loadTransactions();
+        Scene scene4=new Scene(root);
         HelloApplication.primarystage.setScene(scene4);
     }
     public void logout() throws IOException {
