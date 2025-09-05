@@ -56,9 +56,18 @@ public class Scene3Controller {
         String rid=transfer_receivers_userid.getText(); //rid:receivers id
         int amount=Integer.parseInt(amt.getText());
         if(check(amount)){
-            update(-amount,userid);
-            update(amount,rid);
-            comment.setText("transferred amount "+amount+" from your account to user "+rid);
+            String sql="SELECT user_id FROM users WHERE user_id=?";
+            PreparedStatement ps=conn.prepareStatement(sql);
+            ps.setString(1,rid);
+            ResultSet rs=ps.executeQuery();
+            if(rs.next()){
+                update(-amount,userid);
+                update(amount,rid);
+                comment.setText("transferred amount "+amount+" from your account to user "+rid);
+            }else {
+                comment.setText("receivers user id does not exist");
+            }
+
         }else{
             comment.setText("insufficient balance");
         }
