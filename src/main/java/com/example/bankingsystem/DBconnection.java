@@ -9,7 +9,6 @@ import java.sql.SQLException;
 public class DBconnection {
     private static Connection conn=null;
     private DBconnection(){};
-
     public static Connection getConnection() {
         if(conn==null){
             try{
@@ -24,7 +23,6 @@ public class DBconnection {
         }
         return conn;
     }
-
     public static void main(String[] args) throws SQLException {
         try (Connection conn =getConnection()){
             System.out.println("Connected to database");

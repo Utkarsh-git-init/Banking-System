@@ -63,4 +63,7 @@ public class HelloController {
         Scene scene2=new Scene(root);
         HelloApplication.primarystage.setScene(scene2);
     }
+    public void databaseConnectionFailure(){
+        input_comment.setText("Database offline/Invalid Database credential");
+    }
 }

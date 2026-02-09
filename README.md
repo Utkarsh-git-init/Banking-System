@@ -17,6 +17,11 @@ A simple banking application built with JavaFX for the UI, demonstrating core ba
 
 ✔ Basic transaction handling
 
+<img src="src/main/resources/com/example/bankingsystem/loginPage.png" width="600">
+<img src="src/main/resources/com/example/bankingsystem/homepage.png" width="600">
+<img src="src/main/resources/com/example/bankingsystem/depositPage.png" width="600">
+<img src="src/main/resources/com/example/bankingsystem/transactionsPage.png" width="600">
+
 Tech Stack
 
 JavaFX – Frontend UI
